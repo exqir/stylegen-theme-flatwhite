@@ -38,6 +38,11 @@ gulp.task('hammerjs', function() {
   .pipe(gulp.dest(paths.build.assets.vendor))
 })
 
+gulp.task('clipboardjs', function() {
+  return gulp.src(paths.src.clipboardjs)
+  .pipe(gulp.dest(paths.build.assets.vendor))
+})
+
 gulp.task('prism', function() {
   return gulp.src([paths.src.prism.js, paths.src.prism.css])
   .pipe(gulp.dest(paths.build.assets.vendor))
@@ -67,7 +72,7 @@ gulp.task('lato-styles', function() {
 
 gulp.task('lato', ['lato-fonts', 'lato-styles'])
 
-gulp.task('vendor-assets', ['jquery', 'hammerjs', 'prism', 'ionicons', 'lato'])
+gulp.task('vendor-assets', ['jquery', 'hammerjs', 'clipboardjs','prism', 'ionicons', 'lato'])
 
 gulp.task('scripts', function() {
   return gulp.src(path.resolve(paths.src.scripts, '**/*'))

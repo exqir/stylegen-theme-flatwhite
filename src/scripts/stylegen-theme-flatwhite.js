@@ -265,4 +265,21 @@
       link.attr('href', path.join('/') + "/" + tenantSrc + ".css");
     });
   });
+
+  // **********************************************************
+  // copy
+  // **********************************************************
+  var clipboard = new Clipboard('.component-preview-code-copy', {
+    target: function(trigger) {
+      return trigger.nextElementSibling.querySelector('pre');
+    }
+  });
+  clipboard.on('success', function(e) {
+    console.info('Action:',e.action);console.info('Text:',e.text);
+//    showTooltip(e.trigger, 'Copied!');
+    e.clearSelection();
+  });
+  clipboard.on('error', function(e) {
+    e.clearSelection();
+  })
 }(window && window.jQuery))

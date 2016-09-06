@@ -46,6 +46,7 @@
             </div>
           </div>
 
+          <button class="component-preview-code-copy ion-clipboard">Copy</button>
           <div class="component-preview-code code content-group-item" id="{{component.slug}}-code-example">
             <pre><code class="language-html">{{beautified template.content}}</code></pre>
           </div>
@@ -104,6 +105,7 @@
                 </ul>
               </div>
 
+              <button class="component-preview-code-copy ion-clipboard">Copy</button>
               <div class="component-preview-code code content-group-item" id="{{state.slug}}-code-example">
                 <pre class="preview-state-variant-code">{{#each state.content as |c| }}<code class="language-html">{{beautified c.content}}</code>{{/each}}</pre>
               </div>
