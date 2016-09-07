@@ -275,11 +275,46 @@
     }
   });
   clipboard.on('success', function(e) {
-    console.info('Action:',e.action);console.info('Text:',e.text);
-//    showTooltip(e.trigger, 'Copied!');
+    showTooltip(e.trigger, 'Copied!');
     e.clearSelection();
   });
   clipboard.on('error', function(e) {
+    showTooltip(e.trigger, fallbackMessage(e.action));
     e.clearSelection();
-  })
+  });
+
+  var btns = document.querySelectorAll('.component-preview-code-copy');
+  for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('mouseleave', function(e) {
+          e.currentTarget.setAttribute('class', 'component-preview-code-copy ion-clipboard');
+          e.currentTarget.removeAttribute('aria-label');
+      });
+  }
+  function showTooltip(elem, msg) {
+      elem.setAttribute('class', 'component-preview-code-copy ion-clipboard tooltip');
+      elem.setAttribute('aria-label', msg);
+  }
+  function fallbackMessage(action) {
+      var actionMsg = '';
+      var actionKey = (action === 'cut' ? 'X' : 'C');
+      if (/iPhone|iPad/i.test(navigator.userAgent)) {
+          actionMsg = 'No support :(';
+      } else if (/Mac/i.test(navigator.userAgent)) {
+          actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
+      } else {
+          actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
+      }
+      return actionMsg;
+  }
+
+  // var zeroClipboard = new ZeroClipboard($('.component-preview-code-copy'));
+  //
+  // zeroClipboard.on('ready', function(event) {
+  //   zeroClipboard.on('copy', function(event) {
+  //     event.clipboardData.setHtml(event.target.nextElementSibling.querySelection('pre'));
+  //   });
+  // });
+  // zeroClipboard.on('error', function(event) {
+  //   ZeroClipboard.destroy();
+  // });
 }(window && window.jQuery))
