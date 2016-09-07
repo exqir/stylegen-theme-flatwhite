@@ -1,16 +1,18 @@
 .tooltip:after
-  content: attr(aria-label);
-  display: block;
-  position: absolute;
-  top: 110%;
+  content attr(aria-label)
+  display block
+  position absolute
+  top 110%
+  left 50%
+  transform translateX(-50%)
   z-index 5000
-  pointer-events: none
+  pointer-events none
   padding 8px 10px
   line-height 15px
-  white-space: nowrap;
+  white-space nowrap
   font-size .9rem
   font-weight normal
   color tooltip-c
   background-color tooltip-bg
   border-radius 2px
-  box-shadow: 1px 2px 6px rgba(0,0,0,0.3)
+  box-shadow 1px 2px 6px rgba(0,0,0,0.3)
