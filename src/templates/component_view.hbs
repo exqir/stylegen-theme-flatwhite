@@ -1,7 +1,7 @@
 
   <article id="component-{{id}}" class="component preview-breakpoints-root">
     <header class="component-header">
-      <h2 class="component-label ion-cube">{{headline}}</h2>
+      <h2 class="component-label ion-cube" data-path="{{path}}">{{headline}}</h2>
     </header>
 
     <div class="component-content">
@@ -16,9 +16,9 @@
               <ul class="content-group-nav-list">
                 {{#each docs}}<li class="content-group-nav-item {{#if @first}}active{{/if}}"><a href="#{{../id}}-{{label}}" class="content-group-nav-link">{{label}}</a></li>{{/each}}
               </ul>
+              <a href="{{gitRepo}}tree/master{{path}}" class="content-group-ext-link"><span class="ion-merge"></span>Git</a>
             </nav>
           {{/if}}
-
           {{#each docs}}
             <div class="markdown-container content-group-item {{#if @first}}active{{/if}}" id="{{../id}}-{{label}}">
               {{{content}}}
