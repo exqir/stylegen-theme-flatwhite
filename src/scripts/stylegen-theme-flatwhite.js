@@ -269,6 +269,12 @@
   // **********************************************************
   // copy
   // **********************************************************
+  $('.component-preview-code-copy').on('click', function(e) {
+    var trigger, target;
+    trigger = $(e.target);
+    target = $(trigger[0].parentNode).find('[href$=-code-example]');
+    target.click();
+  });
   var clipboard = new Clipboard('.component-preview-code-copy', {
     target: function(trigger) {
       return trigger.nextElementSibling.querySelector('pre');
@@ -305,15 +311,4 @@
       }
       return actionMsg;
   }
-
-  // var zeroClipboard = new ZeroClipboard($('.component-preview-code-copy'));
-  //
-  // zeroClipboard.on('ready', function(event) {
-  //   zeroClipboard.on('copy', function(event) {
-  //     event.clipboardData.setHtml(event.target.nextElementSibling.querySelection('pre'));
-  //   });
-  // });
-  // zeroClipboard.on('error', function(event) {
-  //   ZeroClipboard.destroy();
-  // });
 }(window && window.jQuery))
